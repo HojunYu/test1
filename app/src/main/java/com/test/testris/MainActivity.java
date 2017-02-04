@@ -15,6 +15,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TimerTask mTask;
     private Timer mTimer;
 
+
+    //***************************//
+    //여기서 시작
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,25 +40,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+    //***************************//
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.buttonL:
+            case R.id.buttonL: //Left
                 for (int i = 0; i < mGameBoard[0].length; i++) {
                     mGameBoard[4][i] = random.nextInt(7) + 1;
                 }
                 break;
-            case R.id.buttonR:
+            case R.id.buttonR: //Right
                 for (int i = 0; i < mGameBoard[0].length; i++) {
                     mGameBoard[0][i] = random.nextInt(7) + 1;
                 }
                 break;
-            case R.id.buttonU:
+            case R.id.buttonU: //Up
                 tetrisView.setMoveBlock(2, 13, new int[][]{
                         {0, 1, 0},
                         {1, 1, 1}
                 });
                 break;
-            case R.id.buttonD:
+            case R.id.buttonD: //Down
                 tetrisView.setMoveBlock(5, 13, new int[][]{
                         {3, 3, 0},
                         {0, 3, 3}
@@ -67,6 +71,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
         }
+        tetrisView.invalidate();
+    }
+
+
+    //***************************//
+    // 타이머
+    private void onTimer() {
+        if (test > 0) {
+            test--;
+        }
+        tetrisView.setMoveBlock(4, test, testBlock);
         tetrisView.invalidate();
     }
 
@@ -87,11 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if (test > 0) {
-                            test--;
-                        }
-                        tetrisView.setMoveBlock(4, test, testBlock);
-                        tetrisView.invalidate();
+                        onTimer();
                     }
                 });
             }
