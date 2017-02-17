@@ -33,7 +33,6 @@ public class TetrisView extends View {
     private int mMovingBlockY = 0;
     private int[][] mMovingSahpe = null;
 
-
     public TetrisView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         DisplayMetrics metrics = context.getResources().getDisplayMetrics();

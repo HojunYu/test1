@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -7,55 +7,69 @@
     android:orientation="vertical"
     tools:context="com.test.testris.MainActivity">
 
-    <com.test.testris.TetrisView
-        android:id="@+id/tetrisView"
+    <ImageView
+        android:src="@drawable/bg"
+        android:scaleType="centerCrop"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1" />
+        android:layout_height="match_parent" />
 
     <LinearLayout
+        android:alpha="0.8"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <Button
+        <com.test.testris.TetrisView
+            android:id="@+id/tetrisView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="onClick"
-            android:id="@+id/buttonL"
-            android:text="L" />
+            android:orientation="horizontal">
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="onClick"
-            android:id="@+id/buttonU"
-            android:text="U" />
+            <Button
+                android:id="@+id/buttonL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onClick"
+                android:text="L" />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/buttonD"
-            android:onClick="onClick"
-            android:text="D" />
+            <Button
+                android:id="@+id/buttonU"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onClick"
+                android:text="U" />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/buttonR"
-            android:onClick="onClick"
-            android:text="R" />
+            <Button
+                android:id="@+id/buttonD"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onClick"
+                android:text="D" />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/buttonEnter"
-            android:layout_weight="1"
-            android:onClick="onClick"
-            android:text="-" />
+            <Button
+                android:id="@+id/buttonR"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onClick"
+                android:text="R" />
+
+            <Button
+                android:id="@+id/buttonEnter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onClick"
+                android:text="-" />
+        </LinearLayout>
+
     </LinearLayout>
-</LinearLayout>
+</FrameLayout>
