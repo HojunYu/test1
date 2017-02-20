@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.test.testris.MainActivity">
+    tools:context="com.test.testris.MainActivity"
+    android:background="@drawable/background1"
+    >
 
     <com.test.testris.TetrisView
         android:id="@+id/tetrisView"
