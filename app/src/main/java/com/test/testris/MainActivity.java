@@ -248,7 +248,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private int checkAndRemoveLine() {
-        List<Integer> removes = new ArrayList<Integer>();
+        int clear = 0;
         for (int y = 0; y < mGameBoard.length; y++) {
             boolean full = true;
             for (int x = 0; x < mGameBoard[0].length; x++) {
@@ -258,20 +258,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
 
+
+            if (clear > 0) {
+                mGameBoard[y - clear] = mGameBoard[y];
+            }
+
             if (full) {
-                removes.add(y);
-            }
-        }
-
-        for (int i = removes.size() - 1; i >= 0; i--) {
-            for (int y = removes.get(i) + 1; y < mGameBoard.length; y++) {
-                mGameBoard[y - 1] = mGameBoard[y];
+                clear++;
             }
 
-            mGameBoard[SIZE_Y - 1] = new int[SIZE_X];
         }
 
-        return removes.size();
+        for (int i = 1; i <= clear; i++) {
+            mGameBoard[mGameBoard.length - i] = new int[12];
+        }
+
+
+        return clear;
     }
 
     private void next() {
