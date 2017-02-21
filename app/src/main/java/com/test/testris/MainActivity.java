@@ -148,14 +148,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             } else {
                 stitchBlock();
-                clearLine();
+                clearLine(0);
                 setRandomBlock();
                 row = mGameBoard.length;
                 col = 4;
             }
         } else {
             stitchBlock();
-            clearLine();
+            clearLine(0);
             setRandomBlock();
             row = mGameBoard.length;
             col = 4;
@@ -180,31 +180,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         curBlock = null;
     }
 
-    private void clearLine(){
+    private void clearLine(int clear) {
         int count = 0;
-        int score = 0;
-        for(int i = 0; i< mGameBoard.length; i++){
-
+        for (int i = 0; i < mGameBoard.length; i++) {
             for (int j = 0; j < mGameBoard[i].length; j++) {
                 if (mGameBoard[i][j] != 0) {
                     count++;
                 }
             }
-            int k;
-            if(count == 12 ){
-                for(k = i+1; k < mGameBoard.length ; k++) {
-                    for (int j = 0; j < mGameBoard[i].length; j++) {
-                        mGameBoard[k-1][j] = mGameBoard[k][j];
-                        count = 0;
-                        score ++;
-                    }
-                }
-            }else{
+            if (count == 12) {
+                clear++;
                 count = 0;
+            } else {
+                count = 0;
+            }
+
+
+                for(int l = 0; l <mGameBoard[0].length; l++){
+                    if(i+clear<mGameBoard.length ) {
+                        mGameBoard[i][l] = mGameBoard[i + clear][l];
+
+                }
             }
         }
     }
-
 
     //
     //***************************//
@@ -278,7 +277,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 } else {
                     stitchBlock();
-                    clearLine();
+                    clearLine(0);
                     setRandomBlock();
                     row = mGameBoard.length;
                     col = 4;
@@ -292,7 +291,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     row = r + 1;
                 } else {
                     stitchBlock();
-                    clearLine();
+                    clearLine(0);
                     setRandomBlock();
                     row = mGameBoard.length;
                     col = 4;
