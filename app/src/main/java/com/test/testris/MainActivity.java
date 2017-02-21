@@ -3,6 +3,7 @@ package com.test.testris;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -193,7 +194,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for (int j = 0; j < block.length; j++) {
             for (int i = 0; i < block[0].length; i++) {
                 if (y + j < mGameBoard.length && x + i < mGameBoard[0].length) {
-                    if(block[j][i] > 0) {
+                    if (block[j][i] > 0) {
                         mGameBoard[y + j][x + i] = block[j][i];
                     }
                 }
@@ -262,8 +263,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
 
-        for (int lineNum : removes) {
-            for (int y = lineNum + 1; y < mGameBoard.length; y++) {
+        for (int i = removes.size() - 1; i >= 0; i--) {
+            for (int y = removes.get(i) + 1; y < mGameBoard.length; y++) {
                 mGameBoard[y - 1] = mGameBoard[y];
             }
 
